@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Service from "../components/Service";
-// import d ";
+import Testimonial from "../components/Testimonial";
+
 const servicesData = [
   {
     title: "Web design",
@@ -28,6 +29,15 @@ const servicesData = [
 ];
 
 export default function About() {
+  const [testimonials, setTestimonials] = useState([]);
+  useEffect(() => {
+    fetch("testimonials.json")
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        setTestimonials(data);
+      });
+  }, []);
   return (
     <div className="about active">
       <header>
@@ -63,7 +73,53 @@ export default function About() {
       {/* testimonials section */}
       <section className="testimonials">
         <h3 className="h3 testimonials-title"> Testimonials</h3>
-        <ul className="testimonials-list has-scrollbar"></ul>
+        <ul className="testimonials-list has-scrollbar">
+          {testimonials.map((testimonial, index) => (
+            <Testimonial
+              key={index}
+              name={testimonial.name}
+              avatar={testimonial.avatar}
+              testimonial={testimonial.testimonial}
+            />
+          ))}
+        </ul>
+      </section>
+
+      {/* clients logo */}
+      <section className="clients">
+        <h3 className="h3 testimonials-title"> Clients</h3>
+        <ul className="clients-list has-scrollbar">
+          <li className="clients-item">
+            <a href="#">
+              <img src="/images/logo-1-color.png" alt="" />
+            </a>
+          </li>
+          <li className="clients-item">
+            <a href="#">
+              <img src="/images/logo-2-color.png" alt="" />
+            </a>
+          </li>
+          <li className="clients-item">
+            <a href="#">
+              <img src="/images/logo-3-color.png" alt="" />
+            </a>
+          </li>
+          <li className="clients-item">
+            <a href="#">
+              <img src="/images/logo-4-color.png" alt="" />
+            </a>
+          </li>
+          <li className="clients-item">
+            <a href="#">
+              <img src="/images/logo-5-color.png" alt="" />
+            </a>
+          </li>
+          <li className="clients-item">
+            <a href="#">
+              <img src="/images/logo-6-color.png" alt="" />
+            </a>
+          </li>
+        </ul>
       </section>
     </div>
   );
