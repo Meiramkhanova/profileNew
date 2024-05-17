@@ -37,7 +37,7 @@ function Portfolio() {
   return (
     <section className="portfolio">
       <header>
-        <h2 className="h2 article-title">Portfolio</h2>
+        <h2 className="h2 article-title">Портфолио</h2>
       </header>
       {/* filter buttons */}
       <ul className="filter-list">

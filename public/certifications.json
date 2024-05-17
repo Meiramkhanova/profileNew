@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Frontend React",
+    "company": "One Technologies",
+    "category": "HackerRank",
+    "image": "images/oneTech.jpg"
+  },
+  {
+    "id": 2,
+    "title": "React (Basic) Certificate",
+    "company": "HackerRank",
+    "image": "images/certfi2.png",
+    "url": "https://www.hackerrank.com/certificates/3651239545bf"
+  },
+  {
+    "id": 3,
+    "title": "Responsive Web Design",
+    "company": "freeCodeCamp",
+    "image": "images/certif3.png",
+    "url": "https://www.freecodecamp.org/certification/AdinaMeiramkhanova/responsive-web-design"
+  },
+  {
+    "id": 4,
+    "title": "JavaScript Algorithms and Data Structures",
+    "company": "freeCodeCamp",
+    "image": "images/certif4.png",
+    "url": "https://www.freecodecamp.org/certification/AdinaMeiramkhanova/javascript-algorithms-and-data-structures"
+  }
+]

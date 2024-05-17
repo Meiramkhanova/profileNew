@@ -12,13 +12,13 @@
   );
   --bg-gradient-jet: linear-gradient(
       to bottom right,
-      hsla(240, 1%, 18%, 0.251) 0%,
+      #192734,
       hsla(240, 2%, 11%, 0) 100%
     ),
     hsl(240, 2%, 13%);
   --bg-gradient-yellow-1: linear-gradient(
     to bottom right,
-    hsl(45, 100%, 71%) 0%,
+    #,
     hsla(36, 100%, 69%, 0) 50%
   );
   --bg-gradient-yellow-2: linear-gradient(
@@ -40,13 +40,13 @@
   --onyx: hsl(240, 1%, 17%);
   --eerie-black-1: hsl(240, 2%, 13%);
   /* --eerie-black-2: hsl(240, 2%, 12%); */
-  --eerie-black-2: rgb(11 17 32);
+  --eerie-black-2: #192734;
   /* --smoky-black: hsl(0, 0%, 7%); */
-  --smoky-black: rgb(15 23 42);
+  --smoky-black: #15202b;
   --white-1: hsl(0, 0%, 100%);
   --white-2: hsl(0, 0%, 98%);
   /* --orange-yellow-crayola: hsl(45, 100%, 72%); */
-  --orange-yellow-crayola: rgb(56 189 248);
+  --orange-yellow-crayola: #8899a6;
   --vegas-gold: hsl(45, 54%, 58%);
   --light-gray: hsl(0, 0%, 84%);
   --light-gray-70: hsla(0, 0%, 84%, 0.7);
@@ -174,6 +174,36 @@ section {
   /* border: 1px solid var(--jet); */
   padding: 15px;
   border-radius: 20px;
+}
+
+.certif-wrapper {
+  position: relative;
+  background: var(--border-gradient-onyx);
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 14px;
+  box-shadow: var(--shadow-2);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.certif-box {
+  display: grid;
+  grid-template-columns: 230px 230px 230px;
+  column-gap: 50px;
+  padding-left: 30px;
+}
+
+.certif-img {
+  width: 180px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.certif-parag {
+  color: #8899a6;
 }
 
 .separator {
@@ -352,7 +382,7 @@ main {
 }
 .info-content .name {
   color: var(--white-2);
-  font-size: var(--fs-3);
+  font-size: var(--fs-2);
   font-weight: var(--fw-500);
   letter-spacing: -0.25px;
   margin-bottom: 10px;
@@ -478,7 +508,7 @@ main {
   bottom: 0;
   left: 0;
   width: 100%;
-  background: hsla(240, 1%, 17%, 0.75);
+  background: #22303c;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--jet);
@@ -552,6 +582,7 @@ main {
   position: relative;
   background: var(--border-gradient-onyx);
   padding: 20px;
+  margin-bottom: 15px;
   border-radius: 14px;
   box-shadow: var(--shadow-2);
   z-index: 1;
@@ -821,7 +852,7 @@ main {
 }
 
 .skill-progress-fill {
-  background: rebeccapurple;
+  background: #8899a6;
   height: 100%;
   border-radius: inherit;
 }
@@ -975,7 +1006,7 @@ main {
 
 .project-img img {
   width: 100%;
-  height: 100%;
+  height: 250px;
   object-fit: cover;
   transition: var(--transition-1);
 }

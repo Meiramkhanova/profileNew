@@ -7,27 +7,27 @@ function Navbar() {
       <ul className="navbar-list">
         <li className="navbar-item">
           <NavLink to="/" className="navbar-link">
-            About
+            Обо мне
           </NavLink>
         </li>
         <li className="navbar-item">
           <NavLink to="/resume" className="navbar-link">
-            Resume
+            Резюме
           </NavLink>
         </li>
         <li className="navbar-item">
           <NavLink to="/portfolio" className="navbar-link">
-            Portfolio
+            Портфолио
           </NavLink>
         </li>
         <li className="navbar-item">
           <NavLink to="/blogs" className="navbar-link">
-            Blog
+            Блог
           </NavLink>
         </li>
         <li className="navbar-item">
           <NavLink to="/contact" className="navbar-link">
-            Contact
+            Контакты
           </NavLink>
         </li>
       </ul>

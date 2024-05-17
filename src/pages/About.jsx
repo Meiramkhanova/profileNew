@@ -1,64 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Service from "../components/Service";
-import Testimonial from "../components/Testimonial";
+import SkillItem from "../components/SkillItem";
 
 const servicesData = [
   {
-    title: "Web design",
-    icon: "/images/icon-design.svg",
+    title: "React",
+    icon: "/images/react-svgrepo-com.svg",
     description:
-      "The most modern and high-quality design made at a professional level.",
-  },
-  {
-    title: "Web development",
-    icon: "/images/icon-dev.svg",
-    description: "High-quality development of sites at the professional level.",
-  },
-  {
-    title: "Mobile apps",
-    icon: "/images/icon-app.svg",
-    description:
-      "Professional development of applications for iOS and Android.",
-  },
-  {
-    title: "Photography",
-    icon: "/images/icon-photo.svg",
-    description:
-      "I make high-quality photos of any category at a professional level.",
+      "Нравится создавать приложения путем разбивания на компоненты используя данную библиотеку. И стремлюсь стать react разработчиком",
   },
 ];
 
 export default function About() {
-  const [testimonials, setTestimonials] = useState([]);
-  useEffect(() => {
-    fetch("testimonials.json")
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        setTestimonials(data);
-      });
-  }, []);
   return (
     <div className="about active">
       <header>
-        <h2 className="h2 article-title">About Me</h2>
+        <h2 className="h2 article-title">Обо мне</h2>
       </header>
       <section className="about-text">
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo,
-          reiciendis.
-        </p>
-
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo
-          voluptatem maiores amet aspernatur ullam asperiores.
-        </p>
+        <p>Доброго времени суток! </p>
+        <p>Это мой портфолио-сайт</p>
       </section>
 
       {/* services  section*/}
       <section className="service">
-        <h3 className="h3 service-title">What I'm Doing</h3>
-        <ul className="service-list">
+        <h3 className="h3 service-title">Специализируюсь:</h3>
+        <ul>
           {servicesData.map((service, index) => (
             <Service
               key={index}
@@ -70,56 +37,18 @@ export default function About() {
         </ul>
       </section>
 
-      {/* testimonials section */}
-      <section className="testimonials">
-        <h3 className="h3 testimonials-title"> Testimonials</h3>
-        <ul className="testimonials-list has-scrollbar">
-          {testimonials.map((testimonial, index) => (
-            <Testimonial
-              key={index}
-              name={testimonial.name}
-              avatar={testimonial.avatar}
-              testimonial={testimonial.testimonial}
-            />
-          ))}
-        </ul>
-      </section>
-
-      {/* clients logo */}
-      <section className="clients">
-        <h3 className="h3 testimonials-title"> Clients</h3>
-        <ul className="clients-list has-scrollbar">
-          <li className="clients-item">
-            <a href="#">
-              <img src="/images/logo-1-color.png" alt="" />
-            </a>
-          </li>
-          <li className="clients-item">
-            <a href="#">
-              <img src="/images/logo-2-color.png" alt="" />
-            </a>
-          </li>
-          <li className="clients-item">
-            <a href="#">
-              <img src="/images/logo-3-color.png" alt="" />
-            </a>
-          </li>
-          <li className="clients-item">
-            <a href="#">
-              <img src="/images/logo-4-color.png" alt="" />
-            </a>
-          </li>
-          <li className="clients-item">
-            <a href="#">
-              <img src="/images/logo-5-color.png" alt="" />
-            </a>
-          </li>
-          <li className="clients-item">
-            <a href="#">
-              <img src="/images/logo-6-color.png" alt="" />
-            </a>
-          </li>
-        </ul>
+      <section>
+        <div className="skill">
+          <h3 className="h3 skills-title">Мои навыки:</h3>
+          <ul className="skills-list content-card">
+            <SkillItem title="HTML/CSS" value={85} />
+            <SkillItem title="Vanilla JavaScript" value={60} />
+            <SkillItem title="React" value={80} />
+            <SkillItem title="Redux" value={60} />
+            <SkillItem title="Tailwind CSS" value={70} />
+            <SkillItem title="Material UI" value={90} />
+          </ul>
+        </div>
       </section>
     </div>
   );

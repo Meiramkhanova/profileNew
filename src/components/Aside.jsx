@@ -2,6 +2,7 @@ import React from "react";
 import Img from "../images/adina.jpg";
 import { GiClawSlashes, GiPhone } from "react-icons/gi";
 import { FaLinkedin, FaLocationArrow } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import { GiMailbox } from "react-icons/gi";
 
 function Aside() {
@@ -13,7 +14,7 @@ function Aside() {
         </figure>
 
         <div className="info-content">
-          <h1 className="name">Adina Mei</h1>
+          <h1 className="name">Адина Мейрамханова</h1>
           <p className="title">React Developer</p>
         </div>
         <button className="info_more-btn">
@@ -45,7 +46,7 @@ function Aside() {
             </div>
 
             <div className="contact-info">
-              <p className="contact-title">Phone Number</p>
+              <p className="contact-title">Номер Телефона</p>
               <a href="tel:+77027648993" className="contact-link">
                 +7 702 764 89 93
               </a>
@@ -57,8 +58,8 @@ function Aside() {
             </div>
 
             <div className="contact-info">
-              <p className="contact-title">Location</p>
-              <address>Almaty, Kazakhstan</address>
+              <p className="contact-title">Локация</p>
+              <address>Алматы, Казахстан</address>
             </div>
           </li>
           <li className="contact-item">
@@ -75,6 +76,23 @@ function Aside() {
                 className="contact-link"
               >
                 adinaone
+              </a>
+            </div>
+          </li>
+          <li className="contact-item">
+            <div className="icon-box">
+              <FaGithub />
+            </div>
+
+            <div className="contact-info">
+              <p className="contact-title">Github</p>
+              <a
+                href="https://github.com/Meiramkhanova"
+                target="_blank"
+                rel="noreferrer"
+                className="contact-link"
+              >
+                Профиль
               </a>
             </div>
           </li>
