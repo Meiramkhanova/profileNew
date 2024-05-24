@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaRegEye } from "react-icons/fa";
+import { FaGithub, FaRegEye } from "react-icons/fa";
 
 function Portfolio() {
   // State to store projects data and filtered projects
@@ -23,7 +23,7 @@ function Portfolio() {
   const handleFilterClick = (category) => {
     setSelectedCategory(category);
 
-    if (category === "All") {
+    if (category === "Все") {
       setFilteredProjects(projects);
     } else {
       const filtered = projects.filter(
@@ -41,20 +41,18 @@ function Portfolio() {
       </header>
       {/* filter buttons */}
       <ul className="filter-list">
-        {["All", "Web design", "Applications", "Web development"].map(
-          (category) => (
-            <li key={category} className="filter-item">
-              <button
-                className={category === selectedCategory ? "active" : ""}
-                onClick={() => {
-                  handleFilterClick(category);
-                }}
-              >
-                {category}
-              </button>
-            </li>
-          )
-        )}
+        {["Все", "Frontend", "FullStack"].map((category) => (
+          <li key={category} className="filter-item">
+            <button
+              className={category === selectedCategory ? "active" : ""}
+              onClick={() => {
+                handleFilterClick(category);
+              }}
+            >
+              {category}
+            </button>
+          </li>
+        ))}
       </ul>
 
       {/* portfolio items */}
@@ -66,7 +64,7 @@ function Portfolio() {
               key={project.id}
               data-filter-item
             >
-              <a href="#">
+              <a href={project.imageUrl} target="_blank">
                 <figure className="project-img">
                   <div className="project-item-icon-box">
                     <FaRegEye />

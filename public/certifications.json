@@ -8,10 +8,10 @@
   },
   {
     "id": 2,
-    "title": "React (Basic) Certificate",
-    "company": "HackerRank",
-    "image": "images/certfi2.png",
-    "url": "https://www.hackerrank.com/certificates/3651239545bf"
+    "title": "ALMATY ECOLOGY TECH CHALLENGE",
+    "company": "ITQaimaq Organising Committee",
+    "image": "images/auaaspan.jpg",
+    "url": "#"
   },
   {
     "id": 3,
@@ -26,5 +26,12 @@
     "company": "freeCodeCamp",
     "image": "images/certif4.png",
     "url": "https://www.freecodecamp.org/certification/AdinaMeiramkhanova/javascript-algorithms-and-data-structures"
+  },
+  {
+    "id": 5,
+    "title": "React (Basic) Certificate",
+    "company": "HackerRank",
+    "image": "images/certfi2.png",
+    "url": "https://www.hackerrank.com/certificates/3651239545bf"
   }
 ]

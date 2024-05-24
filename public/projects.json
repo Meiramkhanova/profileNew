@@ -1,56 +1,58 @@
 [
   {
     "id": 1,
-    "title": "Finance",
-    "category": "Web development",
-    "image": "images/project-1.jpg"
+    "title": "Mern_Book",
+    "category": "FullStack",
+    "image": "images/portfolio1.png",
+    "imageUrl": "https://mern-book-front.vercel.app/"
   },
   {
     "id": 2,
-    "title": "Orizon",
-    "category": "Web development",
-    "image": "images/project-2.png"
+    "title": "GSAPProject",
+    "category": "Frontend",
+    "image": "images/portfolio6.png",
+    "imageUrl": "https://gsap-project-pi.vercel.app/"
   },
   {
     "id": 3,
-    "title": "Fundo",
-    "category": "Web design",
-    "image": "images/project-3.jpg"
+    "title": "Levels_fyi",
+    "category": "FullStack",
+    "image": "images/portfolio3.png",
+    "imageUrl": "https://levels-in-kz.vercel.app/"
   },
   {
     "id": 4,
-    "title": "Brawlhalla",
-    "category": "Applications",
-    "image": "images/project-3.jpg"
+    "title": "ExpenseTrackUsingReduxi",
+    "category": "Frontend",
+    "image": "images/portfolio4.png",
+    "imageUrl": "https://trackingitems.vercel.app/"
   },
   {
     "id": 5,
-    "title": "DSM.",
-    "category": "Web design",
-    "image": "images/project-5.png"
+    "title": "ShopStore",
+    "category": "Frontend",
+    "image": "images/portfolio5.png",
+    "imageUrl": "https://the-shop-store.vercel.app/"
   },
   {
     "id": 6,
-    "title": "MetaSpark",
-    "category": "Web design",
-    "image": "images/project-6.png"
+    "title": "PWA_App",
+    "category": "Frontend",
+    "image": "images/portfolio2.png",
+    "imageUrl": "https://react-pwa-app-seven.vercel.app/"
   },
   {
     "id": 7,
-    "title": "Summary",
-    "category": "Web development",
-    "image": "images/project-7.png"
+    "title": "RandomGuote",
+    "category": "Frontend",
+    "image": "images/portfolio7.png",
+    "imageUrl": "https://random-quote-machine-gamma.vercel.app/"
   },
   {
     "id": 8,
-    "title": "Task Manager",
-    "category": "Applications",
-    "image": "images/project-8.jpg"
-  },
-  {
-    "id": 9,
-    "title": "Arrival",
-    "category": "Web development",
-    "image": "images/project-9.png"
+    "title": "SocialApp",
+    "category": "Frontend",
+    "image": "images/portfolio8.png",
+    "imageUrl": "https://social-app-six-flax.vercel.app/"
   }
 ]

@@ -21,7 +21,12 @@ const Blogs = () => {
   const currentPosts = blogs.slice(indexOfFirstPost, indexOfLastPost);
 
   // Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => {
+    const totalPages = Math.ceil(blogs.length / postsPerPage);
+    if (pageNumber >= 1 && pageNumber <= totalPages) {
+      setCurrentPage(pageNumber);
+    }
+  };
 
   return (
     <section className="blog" data-page="blog">
