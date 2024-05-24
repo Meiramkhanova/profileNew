@@ -64,12 +64,12 @@ function Portfolio() {
               key={project.id}
               data-filter-item
             >
-              <a href={project.imageUrl} target="_blank">
+              <a href={project.imageUrl} target="_blank" rel="noreferrer">
                 <figure className="project-img">
                   <div className="project-item-icon-box">
                     <FaRegEye />
                   </div>
-                  <img src={project.image} alt={project.title} />
+                  <img src={project.image} alt={project.title} loading="lazy" />
                 </figure>
                 <h3 className="project-title">{project.title}</h3>
                 <p className="project-category">{project.category}</p>
