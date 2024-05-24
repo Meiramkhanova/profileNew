@@ -5,7 +5,7 @@ import Loading from "../components/Loading";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const BlogPost = lazy(() => delayForDemo(import("../components/BlogPost")));
+const BlogPost = lazy(() => import("../components/BlogPost"));
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -64,17 +64,30 @@ const Blogs = () => {
       <section className="blog" data-page="blog">
         <header>
           <h2 className="h2 article-title">Blog</h2>
-          <Link to="/createBlog" className="create-blog-link">
-            Create New Blog Post
-          </Link>{" "}
-          {/* Link to create blog */}
+
+          <Link
+            to="/createBlog"
+            className="create-blog-link"
+            style={{
+              backgroundColor: "rgb(21,32,43)",
+              padding: "13px",
+              width: "250px",
+              color: "white",
+              borderRadius: "8px",
+              border: "none",
+              marginBottom: "15px",
+            }}
+          >
+            + Create New Blog Post
+          </Link>
         </header>
-        <div className="blog-posts">
+        <div className="blog-posts" style={{ marginBottom: "60px" }}>
           <ul className="blog-posts-list">
             {blogs.length === 0
               ? "No blogs post"
               : currentPosts.map((post, index) => (
                   <BlogPost
+                    id={post._id}
                     key={index}
                     title={post.title}
                     category={post.category}
@@ -137,10 +150,10 @@ const Blogs = () => {
 };
 
 // Add a fixed delay so you can see the loading state
-function delayForDemo(promise) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, 2000);
-  }).then(() => promise);
-}
+// function delayForDemo(promise) {
+//   return new Promise((resolve) => {
+//     setTimeout(resolve, 2000);
+//   }).then(() => promise);
+// }
 
 export default Blogs;

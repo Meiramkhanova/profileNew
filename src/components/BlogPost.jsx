@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const BlogPost = ({
+  id,
   title,
   category,
   date,
@@ -12,7 +14,7 @@ const BlogPost = ({
   console.log("Image URL:", fullImageUrl);
 
   return (
-    <li className="blog-post-item">
+    <li className="blog-post-item" style={{ margin: "20px" }}>
       <a href="#">
         <figure className="blog-banner-box">
           {imageUrl ? (
@@ -31,10 +33,38 @@ const BlogPost = ({
           <p className="blog-text">{description}</p>
         </div>
       </a>
-      <button onClick={onDelete} className="page-link">
-        Delete
-      </button>
-      <button className="page-link">Edit</button>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          paddingTop: "5px",
+        }}
+      >
+        <button
+          onClick={onDelete}
+          style={{
+            backgroundColor: "rgb(21,32,43)",
+            padding: "13px",
+            color: "white",
+            borderRadius: "8px",
+            border: "none",
+          }}
+        >
+          Delete
+        </button>
+        <Link
+          to={`/edit-blog/${id}`}
+          style={{
+            backgroundColor: "rgb(21,32,43)",
+            padding: "13px",
+            color: "white",
+            borderRadius: "8px",
+            border: "none",
+          }}
+        >
+          Edit
+        </Link>
+      </div>
     </li>
   );
 };
