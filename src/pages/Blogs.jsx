@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
-import BlogPost from "../components/BlogPost";
+import React, { Suspense, useEffect, useState } from "react";
+import { lazy } from "react";
 import "./Blogs.css";
+import Loading from "../components/Loading";
+
+const BlogPost = lazy(() => import("../components/BlogPost"));
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -29,70 +32,72 @@ const Blogs = () => {
   };
 
   return (
-    <section className="blog" data-page="blog">
-      <header>
-        <h2 className="h2 article-title">Blog</h2>
-      </header>
-      <div className="blog-posts">
-        <ul className="blog-posts-list">
-          {currentPosts.map((post, index) => (
-            <BlogPost
-              key={index}
-              title={post.title}
-              category={post.category}
-              date={post.date}
-              image={post.image}
-              description={post.description}
-            />
-          ))}
-        </ul>
-      </div>
-      {/* Pagination */}
-      <nav>
-        <ul className="pagination">
-          <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-            <button
-              onClick={() => paginate(currentPage - 1)}
-              className="page-link"
-            >
-              Previous
-            </button>
-          </li>
-          {Array.from(
-            { length: Math.ceil(blogs.length / postsPerPage) },
-            (_, index) => (
-              <li
+    <Suspense fallback={<Loading />}>
+      <section className="blog" data-page="blog">
+        <header>
+          <h2 className="h2 article-title">Blog</h2>
+        </header>
+        <div className="blog-posts">
+          <ul className="blog-posts-list">
+            {currentPosts.map((post, index) => (
+              <BlogPost
                 key={index}
-                className={`page-item ${
-                  currentPage === index + 1 ? "active" : ""
-                }`}
+                title={post.title}
+                category={post.category}
+                date={post.date}
+                image={post.image}
+                description={post.description}
+              />
+            ))}
+          </ul>
+        </div>
+        {/* Pagination */}
+        <nav>
+          <ul className="pagination">
+            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+              <button
+                onClick={() => paginate(currentPage - 1)}
+                className="page-link"
               >
-                <button
-                  onClick={() => paginate(index + 1)}
-                  className="page-link"
+                Previous
+              </button>
+            </li>
+            {Array.from(
+              { length: Math.ceil(blogs.length / postsPerPage) },
+              (_, index) => (
+                <li
+                  key={index}
+                  className={`page-item ${
+                    currentPage === index + 1 ? "active" : ""
+                  }`}
                 >
-                  {index + 1}
-                </button>
-              </li>
-            )
-          )}
-          <li
-            className={`page-item ${
-              currentPage === Math.ceil(blogs.length / postsPerPage)
-                ? "disabled"
-                : ""
-            }`}
-          >
-            <button
-              onClick={() => paginate(currentPage + 1)}
-              className="page-link"
+                  <button
+                    onClick={() => paginate(index + 1)}
+                    className="page-link"
+                  >
+                    {index + 1}
+                  </button>
+                </li>
+              )
+            )}
+            <li
+              className={`page-item ${
+                currentPage === Math.ceil(blogs.length / postsPerPage)
+                  ? "disabled"
+                  : ""
+              }`}
             >
-              Next
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </section>
+              <button
+                onClick={() => paginate(currentPage + 1)}
+                className="page-link"
+              >
+                Next
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </section>
+    </Suspense>
   );
 };
 
