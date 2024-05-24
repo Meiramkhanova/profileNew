@@ -2,21 +2,49 @@ import React, { Suspense, useEffect, useState } from "react";
 import { lazy } from "react";
 import "./Blogs.css";
 import Loading from "../components/Loading";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
-const BlogPost = lazy(() => import("../components/BlogPost"));
+const BlogPost = lazy(() => delayForDemo(import("../components/BlogPost")));
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(4); // Number of posts per page
+  const postsPerPage = 4; // Number of posts per page
 
   useEffect(() => {
-    fetch("./blogs.json")
-      .then((response) => response.json())
-      .then((data) => {
-        setBlogs(data);
+    axios
+      .get("http://localhost:8081/api/blogs")
+      .then((res) => {
+        setBlogs(res.data);
+      })
+      .catch((error) => {
+        console.log("Error from ShowBlogList");
       });
   }, []);
+
+  const fetchBlogs = () => {
+    axios
+      .get("http://localhost:8081/api/blogs")
+      .then((res) => {
+        setBlogs(res.data);
+      })
+      .catch((error) => {
+        console.log("Error from ShowBlogList");
+      });
+  };
+
+  const onDeleteClick = (id) => {
+    axios
+      .delete(`http://localhost:8081/api/blogs/${id}`)
+      .then((res) => {
+        // Refresh the blog list after deletion
+        fetchBlogs();
+      })
+      .catch((err) => {
+        console.log("error");
+      });
+  };
 
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
@@ -36,19 +64,26 @@ const Blogs = () => {
       <section className="blog" data-page="blog">
         <header>
           <h2 className="h2 article-title">Blog</h2>
+          <Link to="/createBlog" className="create-blog-link">
+            Create New Blog Post
+          </Link>{" "}
+          {/* Link to create blog */}
         </header>
         <div className="blog-posts">
           <ul className="blog-posts-list">
-            {currentPosts.map((post, index) => (
-              <BlogPost
-                key={index}
-                title={post.title}
-                category={post.category}
-                date={post.date}
-                image={post.image}
-                description={post.description}
-              />
-            ))}
+            {blogs.length === 0
+              ? "No blogs post"
+              : currentPosts.map((post, index) => (
+                  <BlogPost
+                    key={index}
+                    title={post.title}
+                    category={post.category}
+                    date={post.date}
+                    imageUrl={post.imageUrl}
+                    description={post.description}
+                    onDelete={() => onDeleteClick(post._id)}
+                  />
+                ))}
           </ul>
         </div>
         {/* Pagination */}
@@ -100,5 +135,12 @@ const Blogs = () => {
     </Suspense>
   );
 };
+
+// Add a fixed delay so you can see the loading state
+function delayForDemo(promise) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, 2000);
+  }).then(() => promise);
+}
 
 export default Blogs;

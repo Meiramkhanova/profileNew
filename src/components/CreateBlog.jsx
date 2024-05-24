@@ -1,53 +1,51 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function CreateBlog() {
-  const navigate = useNavigate();
+const CreateBlog = () => {
+  const [title, setTitle] = useState("");
+  const [imageUrl, setImageUrl] = useState(null);
+  const [description, setDescription] = useState("");
 
-  const [blog, setBlog] = useState({
-    title: "",
-    imageUrl: "",
-    date: "",
-    description: "",
-  });
-
-  const onChange = (e) => {
-    setBlog({ ...blog, [e.target.name]: e.target.value });
-  };
-
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:8081/api/blogs", blog)
-      .then((res) => {
-        setBlog({
-          title: "",
-        });
-        // Push to /
-        navigate("/");
-      })
-      .catch((err) => {
-        console.log("Error in CreateBlog!");
-      });
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("imageUrl", imageUrl); // Field name should match multer configuration
+    formData.append("description", description);
+
+    try {
+      const res = await axios.post(
+        "http://localhost:8081/api/blogs",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(res.data);
+    } catch (error) {
+      console.error("Error in CreateBlog!", error);
+    }
   };
 
   return (
-    <div style={{ paddingTop: "200px" }}>
-      <form action="" onSubmit={onSubmit}>
-        <div>
-          <input
-            type="text"
-            name="title"
-            placeholder="Title"
-            value={blog.title}
-            onChange={onChange}
-          />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <form onSubmit={onSubmit}>
+      <input
+        type="text"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Title"
+      />
+      <input type="file" onChange={(e) => setImageUrl(e.target.files[0])} />
+      <textarea
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        placeholder="Description"
+      ></textarea>
+      <button type="submit">Create Blog</button>
+    </form>
   );
-}
+};
 
 export default CreateBlog;
